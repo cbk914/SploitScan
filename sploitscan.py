@@ -77,8 +77,10 @@ def get_updated_cve_data(cve_id):
 
         if nvd_last_modified > github_last_modified:
             return nvd_data
-        else:
+        elif github_last_modified > nvd_last_modified:
             return github_data
+        else:
+            return github_data  # or nvd_data, depending on preference
     elif nvd_data:
         return nvd_data
     else:
